@@ -3,7 +3,7 @@
 // diameter of hole across-flats
 size = 7;
 // size of drive
-drive = 6.35;
+drive = 6.35; // [6.35:1/4", 9.525:3/8", 12.7:1/2", 19.05:3/4", 25.4:1"]
 // depth of socket
 depth = 10;
 // drive and socket size tolerance
