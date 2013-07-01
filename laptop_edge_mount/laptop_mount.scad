@@ -5,18 +5,18 @@
 /* [Laptop Mounting] */
 
 // depth of laptop stand surface (mm)
-depth = 175;
+depth = 195;
 // width of laptop arms (mm)
 arm_width = 20;
 // size of laptop holding lip
-lip = 20;
+lip = 15;
 // thickness of laptop holding lip
 lip_thickness = 3;
 
 /* [Structure] */
 
 // angle from wall (degrees)
-angle = 60;
+angle = 50;
 // width of stand (mm) (max Z dimension when printing)
 width = 75;
 // support thickness (mm)
@@ -42,6 +42,7 @@ wall_support_pos = -hook_depth-hook_thickness;
 wall_support_height = rotated_height-((hook_depth+hook_thickness)/tan(angle));
 structural_support_length = tan(angle)*wall_support_height;
 
+rotate([0, -90, 0])
 union() {
 	translate( [0, 0, rotated_height] )
 	rotate( [90-angle, 0, 0] )
@@ -77,12 +78,12 @@ union() {
 	}
 	
 	//in between wall supports
-	translate([0, wall_support_pos-thickness, 0])
-	cube( [width, thickness, thickness], center=false );
+	translate([thickness, wall_support_pos-thickness, 0])
+	cube( [width-2*thickness, thickness, thickness], center=false );
 	
 	//structural supports
 	for(arm = [0, arm_spacing+(arm_width-thickness)]) {
 		translate([arm, wall_support_pos-structural_support_length, 0])
-		cube( [thickness, structural_support_length-thickness, thickness], center=false );
+		cube( [thickness, structural_support_length, thickness], center=false );
 	}
 }
