@@ -9,7 +9,7 @@ depth = 195;
 // width of laptop arms (mm)
 arm_width = 20;
 // size of laptop holding lip
-lip = 15;
+lip = 25;
 // thickness of laptop holding lip
 lip_thickness = 3;
 
@@ -20,7 +20,7 @@ angle = 50;
 // width of stand (mm) (max Z dimension when printing)
 width = 75;
 // support thickness (mm)
-thickness = 8; // [5:30]
+thickness = 10;
 
 arm_spacing = width - arm_width;
 rotated_depth = sin(angle) * depth;
