@@ -41,6 +41,8 @@ External_dimension=120;
 
 Rods_and_rings_wide=2.13;
 
+Thickness_of_the_plate=1.75;
+
 /* [Mount] */
 
 Mount_type = "pins"; // [pins,holes]
@@ -69,9 +71,6 @@ Mounting_screw_thread_diameter=4.8;
 Head_diameter_mounting_screw=6.5;
 
 Height_of_the_cone_mounting_screw=1.9;
-
-// Height Of The Cone Mounting Screw plus 0.5 mm recommended
-Thickness_of_the_plate=2.4;
 
 // preview[view:south west, tilt:top]
 
