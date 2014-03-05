@@ -181,6 +181,27 @@ module mount_pin(pin_h, pin_r, pin_lh, pin_lt)
 	pin(pin_h, pin_r, pin_lh, pin_lt);
 }
 
+module plate()
+{
+	difference(){
+	  // plate
+	  translate([0,0,thick/2])
+	    cube([size,size,thick],center=true);
+	  translate([0,0,-0.5])
+	    cylinder(r=id/2,h=thick+1,$fn=120);
+	  // round corners
+	  for(a=[0,90,-90,180]){
+	    rotate([0,0,a]){
+	      translate([mount/2,mount/2,-0.5])
+	        difference(){
+	          cube([(size-mount)/2+0.1,(size-mount)/2+0.1,thick+1]);
+	          cylinder(r=(size-mount)/2,h=thick+1,$fn=60);
+	        }
+	    }
+	  }
+	}
+}
+
 // grill
 intersection(){
   rotate([0,0,45])
@@ -225,23 +246,7 @@ for(a=[45,-45,135,-135]){
 if(Mount_type=="pins")
 {
 union() {
-	difference(){
-	  // plate
-	  translate([0,0,thick/2])
-	    cube([size,size,thick],center=true);
-	  translate([0,0,-0.5])
-	    cylinder(r=id/2,h=thick+1,$fn=120);
-	  // mount holes and round corners
-	  for(a=[0,90,-90,180]){
-	    rotate([0,0,a]){
-	      translate([mount/2,mount/2,-0.5])
-	        difference(){
-	          cube([(size-mount)/2+0.1,(size-mount)/2+0.1,thick+1]);
-	          cylinder(r=(size-mount)/2,h=thick+1,$fn=60);
-	        }
-	    }
-	  }
-	}
+	plate();
 	//mount pins
 	for(a=[0,90,-90,180]){
 	    rotate([0,0,a]){
@@ -256,18 +261,10 @@ else
 {
 difference(){
   // plate
-  translate([0,0,thick/2])
-    cube([size,size,thick],center=true);
-  translate([0,0,-0.5])
-    cylinder(r=id/2,h=thick+1,$fn=120);
+  plate();
   // mount holes and round corners
   for(a=[0,90,-90,180]){
     rotate([0,0,a]){
-      translate([mount/2,mount/2,-0.5])
-        difference(){
-          cube([(size-mount)/2+0.1,(size-mount)/2+0.1,thick+1]);
-          cylinder(r=(size-mount)/2,h=thick+1,$fn=60);
-        }
       translate([mount/2,mount/2,thick+0.01])
         mount_hole(m_od,m_id,m_h,thick);
     }
