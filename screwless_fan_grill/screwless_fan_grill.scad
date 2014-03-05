@@ -176,11 +176,6 @@ module mount_hole(d_l,d_s,deep,h)
   }
 }
 
-module mount_pin(pin_h, pin_r, pin_lh, pin_lt)
-{
-	pin(pin_h, pin_r, pin_lh, pin_lt);
-}
-
 module plate()
 {
 	difference(){
