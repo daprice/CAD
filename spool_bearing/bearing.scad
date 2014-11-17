@@ -18,7 +18,7 @@ P=45;//[30:60]
 // number of teeth to twist across
 nTwist=1;
 // width of hole
-w=11;
+w=13;
 
 DR=0.5*1;// maximum depth ratio of teeth
 
