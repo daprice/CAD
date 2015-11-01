@@ -4,7 +4,7 @@ include <MCAD/constants.scad>
 
 in = mm_per_inch;
 
-polyhedron_type = 16;
+polyhedron_type = 17;
 
 //overall size parameters
 end_thickness = 7/16*in; //this was the thickness of the original piece I'm basing this on
@@ -20,17 +20,29 @@ hole_height = 2*in + 1/16*in; //vertical distance from bottom of end piece to ce
 hole_dia = 1/8 * in; //diameter of screw holes
 hole_depth = 3/8 * in; //depth of screw holes
 
-rotate([0,-90,0]) intersection() {
-	end_polyhedron(end_width, end_height, polyhedron_type);
-
-	//the shape of the original end cap that the new one must match
-	difference() {
-		end_cap(max_end_thickness, end_width, end_height, fillet_radius, end_curve_height);
-		//bolt holes
-		translate([-0.1, end_width/2, hole_height]) {
-			translate([0, -hole_spacing/2, 0]) rotate([0,90,0]) cylinder(d=hole_dia, h=hole_depth + 0.1);
-			translate([0, hole_spacing/2, 0]) rotate([0,90,0]) cylinder(d=hole_dia, h=hole_depth + 0.1);
+rotate([0,-90,0]) difference() {
+	union() {
+		//hull original end cap shape with part of polyhedron
+		hull() {
+			end_cap(10, end_width, end_height, fillet_radius, end_curve_height);
+			intersection() {
+				cube([end_width/2, end_width, end_height]);
+				end_polyhedron(end_width, end_height, polyhedron_type);
+			}
 		}
+	
+		//intersection of the polyhedron and end cap silhouette
+		intersection() {
+			end_polyhedron(end_width, end_height, polyhedron_type);
+		
+			//the shape of the original end cap that the new one must match
+			end_cap(max_end_thickness, end_width, end_height, fillet_radius, end_curve_height);
+		}
+	}
+	//bolt holes
+	translate([-0.1, end_width/2, hole_height]) {
+		translate([0, -hole_spacing/2, 0]) rotate([0,90,0]) cylinder(d=hole_dia, h=hole_depth + 0.1);
+		translate([0, hole_spacing/2, 0]) rotate([0,90,0]) cylinder(d=hole_dia, h=hole_depth + 0.1);
 	}
 }
 
