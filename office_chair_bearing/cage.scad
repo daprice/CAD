@@ -2,7 +2,7 @@
 id = 9;
 
 // outer diameter of bearing
-od = 22;
+od = 24;
 
 // number of balls in bearing
 num_balls = 5; // [3:1:20]
@@ -11,7 +11,7 @@ num_balls = 5; // [3:1:20]
 ball_d = 5;
 
 // extra space allowed around each ball
-ball_tol = 0.8; // [0:0.05:2]
+ball_tol = 0.9; // [0:0.05:2]
 
 // thickness of ball cage
 cage_thick = 3.5;
