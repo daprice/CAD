@@ -2,7 +2,7 @@
 id = 9;
 
 // outer diameter of bearing
-od = 24;
+od = 28;
 
 // number of balls in bearing
 num_balls = 5; // [3:1:20]
