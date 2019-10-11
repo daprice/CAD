@@ -1,0 +1,20 @@
+$system-ui-font-stack: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Lucida Grande", "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+$monospace-font-stack: monospace;
+
+html {
+	
+	/* System fonts based on examples at https://css-tricks.com/snippets/css/system-font-stack/ with preferred use of the `system-ui` standard */
+	--font-family-system-ui: #{inspect($system-ui-font-stack)};
+	--font-family-monospace: #{inspect($monospace-font-stack)};
+	
+	font-family: var(--font-family-system-ui);
+	
+}
+
+code {
+	font-family: var(--font-family-monospace);
+}
+
+pre {
+	font-family: var(--font-family-monospace);
+}

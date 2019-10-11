@@ -1,0 +1,11 @@
+---
+layout: default
+---
+
+{{ content }}
+
+{% for file in site.static_files %}
+	{% if file.path contains page.path %}
+		<a href="{{file.path}}">{{file.name}}</a>
+	{% endif %}
+{% endfor %}

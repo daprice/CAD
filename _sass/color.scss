@@ -1,0 +1,29 @@
+$light-mode-link-color: rgb(119, 136, 153);
+$light-mode-link-color-visited: rgb(47, 79, 79);
+
+$dark-mode-link-color: rgb(162, 174, 186);
+$dark-mode-link-color-visited: rgb(112, 128, 144);
+
+:root {
+	color-scheme: light dark;
+	
+	/* colors for light mode */
+	--link-color-unvisited: #{$light-mode-link-color};
+	--link-color-visited: #{$light-mode-link-color-visited};
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		/* colors for dark mode */
+		--link-color-unvisited: #{$dark-mode-link-color};
+		--link-color-visited: #{$dark-mode-link-color-visited};
+	}
+}
+
+a:link {
+	color: var(--link-color-unvisited);
+}
+
+a:visited {
+	color: var(--link-color-visited);
+}
