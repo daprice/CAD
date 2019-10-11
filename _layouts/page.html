@@ -14,7 +14,7 @@ layout: default
 			<li>
 				<a href="{{file.path}}">
 					{{file.basename}}
-					<span class="file-extension-label">{{file.extname || remove_first: "."}}</span>
+					<span class="file-extension-label">{{file.extname | remove_first: "."}}</span>
 				</a><br>
 			</li>
 		{%- endunless -%}
