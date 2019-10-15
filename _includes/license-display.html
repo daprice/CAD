@@ -39,14 +39,14 @@ Available license types:
 {%- endif -%}
 
 <div class="license-display" xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="https://creativecommons.org/ns#">
-	<p>
+	<p{% if page.license == "CC0" %} xmlns:vcard="http://www.w3.org/2001/vcard-rdf/3.0#"{% endif %}>
 		<a rel="license" href="{{ license-url }}">
 			{%- if page.license contains "CC " -%}
 			<img alt="Creative Commons" src='data:image/svg+xml;utf8,{% include license-icons/cc/cc.svg %}' />
 			{%- endif -%}
 			
 			{%- if page.license contains "0" -%}
-			<img alt="Zero" src='data:image/svg+xml;utf8,{% include license-icons/cc/zero.svg %}' />
+			<img alt="Creative Commons Zero" src='data:image/svg+xml;utf8,{% include license-icons/cc/zero.svg %}' />
 			{%- endif -%}
 			
 			{%- if page.license contains "Public Domain" -%}
@@ -69,10 +69,17 @@ Available license types:
 			<img alt="No Derivatives" src='data:image/svg+xml;utf8,{% include license-icons/cc/nd.svg %}' />
 			{%- endif -%}
 		</a><br />
-		<a property="dct:title" href="{{ {{ site.url }}{{ page.url }} }}" rel="cc:attributionURL">{{ page.title }}</a>
-		{% if page.author %} by <span property="cc:attributionName">{{ page.author }}</span>{% endif %}
-		 is licensed under a <a rel="license" href="{{ license-url }}">{{ license-name }}</a>.
+		{%- if page.license == "CC0" -%}
+			To the extent possible under law, <a rel="dct:publisher" href="{{ site.url }}{{ page.url }}"><span property="dct:title">{{ page.author }}</span></a> has waived all copyright and related or neighboring rights to <span property="dct:title">{{ page.title }}</span>.
+		{%- elsif page.license == "Public Domain" -%}
+			This work (<span property="dct:title">{{ page.title }}</span> by <a href="{{ site.url }}{{ page.url }}" rel="dct:creator"><span property="dct:title">{{ page.author }}</span></a>), identified by <a href="{{ site.url }}{{ page.url }}" rel="dct:publisher"><span property="dct:title">{{ page.author }}</span></a>, is free of known copyright restrictions.
+		{%- else -%}
+			<a property="dct:title" href="{{ site.url }}{{ page.url }}" rel="cc:attributionURL">{{ page.title }}</a>
+			{% if page.author %} by <span property="cc:attributionName">{{ page.author }}</span>{% endif %}
+			 is licensed under a <a rel="license" href="{{ license-url }}">{{ license-name }}</a>.
+		{%- endif -%}
 	</p>
+	
 	{%- if page.remixed-from -%}
 	<p>
 		Remixed from:
