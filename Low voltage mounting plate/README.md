@@ -1,3 +1,8 @@
+---
+title: "Low Voltage Mounting Plate"
+license: "CC BY-SA"
+author: "Dale Price"
+---
 # Low Voltage Mounting Plate
 
 This is a model of an old-work, low voltage (class 2) mounting bracket that can clip onto drywall or similar materials.

@@ -1,0 +1,78 @@
+{%- comment -%}
+Available license types:
+
+- "CC0"
+- "Public Domain"
+- "CC BY"
+- "CC BY-SA"
+- "CC BY-ND"
+- "CC BY-NC"
+- "CC BY-NC-SA"
+- "CC BY-NC-ND"
+
+{%- endcomment -%}
+
+{%- if page.license == "CC0" -%}
+	{%- assign license-name = "Creative Commons Zero" -%}
+	{%- assign license-url = "http://creativecommons.org/publicdomain/zero/1.0/" -%}
+{%- elsif page.license == "Public Domain" -%}
+	{%- assign license-name = "Public Domain" -%}
+	{%- assign license-url = "http://creativecommons.org/publicdomain/mark/1.0/" -%}
+{%- elsif page.license == "CC BY" -%}
+	{%- assign license-name = "Creative Commons Attribution 4.0 International License" -%}
+	{%- assign license-url = "https://creativecommons.org/licenses/by/4.0" -%}
+{%- elsif page.license == "CC BY-SA" -%}
+	{%- assign license-name = "Creative Commons Attribution-ShareAlike 4.0 International License" -%}
+	{%- assign license-url = "https://creativecommons.org/licenses/by-sa/4.0" -%}
+{%- elsif page.license == "CC BY-ND" -%}
+	{%- assign license-name = "Creative Commons Attribution-NoDerivatives 4.0 International License" -%}
+	{%- assign license-url = "https://creativecommons.org/licenses/by-nd/4.0" -%}
+{%- elsif page.license == "CC BY-NC" -%}
+	{%- assign license-name = "Creative Commons Attribution-NonCommercial 4.0 International License" -%}
+	{%- assign license-url = "https://creativecommons.org/licenses/by-nc/4.0" -%}
+{%- elsif page.license == "CC BY-NC-SA" -%}
+	{%- assign license-name = "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License" -%}
+	{%- assign license-url = "https://creativecommons.org/licenses/by-nc-sa/4.0" -%}
+{%- elsif page.license == "CC BY-NC-ND" -%}
+	{%- assign license-name = "Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License" -%}
+	{%- assign license-url = "https://creativecommons.org/licenses/by-nc-nd/4.0" -%}
+{%- endif -%}
+
+<div class="license-display">
+	<p>
+		<a rel="license" href="{{ license-url }}">
+			{%- if page.license contains "CC " -%}
+			<img alt="Creative Commons" src='data:image/svg+xml;utf8,{% include license-icons/cc/cc.svg %}' />
+			{%- endif -%}
+			
+			{%- if page.license contains "0" -%}
+			<img alt="Zero" src='data:image/svg+xml;utf8,{% include license-icons/cc/zero.svg %}' />
+			{%- endif -%}
+			
+			{%- if page.license contains "Public Domain" -%}
+			<img alt="Public Domain" src='data:image/svg+xml;utf8,{% include license-icons/cc/pd.svg %}' />
+			{%- endif -%}
+			
+			{%- if page.license contains "BY" -%}
+			<img alt="Attribution" src='data:image/svg+xml;utf8,{% include license-icons/cc/by.svg %}' />
+			{%- endif -%}
+			
+			{%- if page.license contains "NC" -%}
+			<img alt="Non-Commercial" src='data:image/svg+xml;utf8,{% include license-icons/cc/nc.svg %}' />
+			{%- endif -%}
+			
+			{%- if page.license contains "SA" -%}
+			<img alt="Share Alike" src='data:image/svg+xml;utf8,{% include license-icons/cc/sa.svg %}' />
+			{%- endif -%}
+			
+			{%- if page.license contains "ND" -%}
+			<img alt="No Derivatives" src='data:image/svg+xml;utf8,{% include license-icons/cc/nd.svg %}' />
+			{%- endif -%}
+		</a><br />
+		This work is licensed under a <a rel="license" href="{{ license-url }}">{{ license-name }}</a>.
+	</p>	
+	<p class="license-display-meta">
+		<span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">{{ page.title }}</span>
+		{% if page.author %} by <a xmlns:cc="https://creativecommons.org/ns#" property="cc:attributionName" href="{{ site.url }}{{ page.url }}"  rel="cc:attributionURL">{{ page.author }}</a>{% endif %}
+	</p>
+</div>
