@@ -73,4 +73,16 @@ Available license types:
 		{% if page.author %} by <span property="cc:attributionName">{{ page.author }}</span>{% endif %}
 		 is licensed under a <a rel="license" href="{{ license-url }}">{{ license-name }}</a>.
 	</p>
+	{%- if page.remixed-from -%}
+	<p>
+		Remixed from:
+		<ul>
+			{% for source in page.remixed-from %}
+			<li>
+				<a href="{{ source.url }}" rel="dct:source"><span property="dct:title">{{ source.title }}</span></a> by <span>{{ source.author }}</span>
+			</li>
+			{% endfor %}
+		</ul>
+	</p>
+	{%- endif -%}
 </div>
