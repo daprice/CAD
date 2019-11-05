@@ -1,6 +1,23 @@
-img {
-	width: auto;
-	height: auto;
-	max-width: 100%;
-	max-height: calc(100vmin - 4.5rem);
+/*
+	Limit an element's height to fit on the screen, within the device's safe area insets (if applicable).
+	
+	Arguments:
+		- $vertical-padding: the minimum amount of extra space that should be left around the element (only applied if it's greater than the top and bottom safe area insets combined, or if there are no safe area insets)
+*/
+@mixin fit-vertically-to-screen($vertical-padding: 0px) {
+	max-height: calc(100vmin - #{$vertical-padding});
+	
+	@supports(max-height: max(0px)) {
+		max-height: calc(100vmin - max(#{$vertical-padding}, (env(safe-area-inset-top) + env(safe-area-inset-bottom))));
+	}
 }
+
+img {
+	max-width: 100%;
+	
+	&:not([class]) {
+		@include fit-vertically-to-screen(4.5rem);
+	}
+	
+}
+
