@@ -9,30 +9,44 @@ layout: default
 {%- capture page_url -%}{{ page.path | relative_url }}{%- endcapture -%}
 
 <ul class="thing-file-list">
-{%- for file in site.static_files -%}
+{%- assign sorted_files = site.static_files | sort: "extname" -%}
+{%- for file in sorted_files -%}
 	{%- capture file_url -%}{{ file.path | relative_url }}{%- endcapture -%}
 	{%- if file_url contains page.dir and file_url != page_url -%}
 		{%- unless file.extname == ".jpg" or file.extname == ".jpeg" or file.extname == ".png" or file.extname == ".gif" or file.extname == ".usdz" -%}
 			<li>
+				{%- if file.extname == ".stl" or file.extname == ".amf" or file.extname == ".3mf" -%}
+				{%- for image in site.static_files -%}
+					{%- capture image_url -%}{{ image.path | relative_url }}{%- endcapture -%}
+					{%- if image.basename == file.basename and image_url contains page.dir and image_url != page_url -%}
+						{%- if image.extname == ".jpg" or image.extname == ".jpeg" or image.extname == ".png" or image.extname == ".gif" -%}
+							
+							
+							{%- for usdz_file in site.static_files -%}
+								{%- capture usdz_file_url -%}{{ usdz_file.path | relative_url }}{%- endcapture -%}
+								{%- if usdz_file.extname == ".usdz" and usdz_file_url contains page.dir and usdz_file_url != page_url -%}
+									{%- if usdz_file.basename == file.basename -%}
+									<img data-ar-fp="{{usdz_file.path}}" src="{{image.path}}" alt="Rendering of {{file.name}}" />
+									{%- assign image_ar = true -%}
+									{%- break -%}
+									{%- endif -%}
+								{%- endif -%}
+							{%- endfor -%}
+							
+							{% unless image_ar %}<img src="{{image.path}}" alt="Rendering of {{file.name}}" />{% endunless %}
+							
+						{%- break -%}
+						{%- endif -%}
+					{%- endif -%}
+				{%- endfor -%}
+				{%- endif -%}
+				
 				<a href="{{file.path}}">
 					{{file.basename}}
 					<span class="file-extension-label">{{file.extname | remove_first: "."}}</span>
-				</a><br>
+				</a>
 			</li>
 		{%- endunless -%}
-	{%- endif -%}
-{%- endfor -%}
-</ul>
-
-<ul class="thing-images">
-	{%- for file in site.static_files -%}
-	{%- capture file_url -%}{{ file.path | relative_url }}{%- endcapture -%}
-	{%- if file_url contains page.dir and file_url != page_url -%}
-		{%- if file.extname == ".jpg" or file.extname == ".jpeg" or file.extname == ".png" or file.extname == ".gif" -%}
-			<li>
-				<img src="{{file.path}}">
-			</li>
-		{%- endif -%}
 	{%- endif -%}
 {%- endfor -%}
 </ul>
