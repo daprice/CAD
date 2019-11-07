@@ -12,6 +12,9 @@
 	}
 }
 
+$max-textblock-width: 60rem;
+$min-textblock-width: 40rem;
+
 img {
 	max-width: 100%;
 	
@@ -24,6 +27,13 @@ img {
 body {
 	margin-left: 1ch;
 	margin-right: 1ch;
+	
+	@media screen and (min-width: 60rem) {
+		& {
+			margin-left: 10%;
+			margin-right: 10%;
+		}
+	}
 }
 
 .site-header {
@@ -37,14 +47,14 @@ body {
 		border-bottom-color: transparent;
 	}
 	
-	max-width: 80ch;
+	max-width: $max-textblock-width;
 	margin-left: auto;
 	margin-right: auto;
 	
 	.site-title {
 		padding: 0.75rem;
 		
-		@media screen and (min-width: 80rem) {
+		@media screen and (min-width: $max-textblock-width) {
 			& {
 				padding: 1.5rem;
 			}
@@ -53,8 +63,37 @@ body {
 
 }
 
-main > * {
-	max-width: 80ch;
+article:not([class]) > *, section > * {
+	max-width: $max-textblock-width;
 	margin-left: auto;
 	margin-right: auto;
+}
+
+article.thing {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	align-content: space-between;
+	justify-content: center;
+	
+	& > section {
+		flex-shrink: 1;
+		flex-grow: 1;
+		flex-basis: auto;
+		width: 50%;
+		max-width: $max-textblock-width;
+		
+		margin-top: 0px;
+		margin-left: 1.5rem;
+		margin-right: 1.5rem;
+	}
+	
+	& > section.thing-readme {
+		flex-grow: 2;
+	}
+	
+	& > section.thing-info {
+		width: 33%;
+	}
 }

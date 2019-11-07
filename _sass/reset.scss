@@ -73,6 +73,6 @@ a:not([class]) {
 }
 
 /* Natural flow and rhythm in articles by default */
-article > * + *, .page-content > * + * {
+article > * + *, article > section > * + * {
   margin-top: 1em;
 }
