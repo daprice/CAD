@@ -13,7 +13,7 @@
 }
 
 $max-textblock-width: 60rem;
-$min-textblock-width: 40rem;
+$min-textblock-width: 20rem;
 
 img {
 	max-width: 100%;
@@ -91,6 +91,11 @@ article.thing {
 	
 	& > section.thing-readme {
 		flex-grow: 2;
+		min-width: $min-textblock-width;
+		
+		@media screen and (max-width: $min-textblock-width) {
+			min-width: auto;
+		}
 	}
 	
 	& > section.thing-info {
