@@ -77,6 +77,8 @@ article.thing {
 	align-content: space-between;
 	justify-content: center;
 	
+	margin: -1.5rem;
+	
 	& > section {
 		flex-shrink: 1;
 		flex-grow: 1;
@@ -84,9 +86,7 @@ article.thing {
 		width: 50%;
 		max-width: $max-textblock-width;
 		
-		margin-top: 0px;
-		margin-left: 1.5rem;
-		margin-right: 1.5rem;
+		margin: 1.5rem;
 	}
 	
 	& > section.thing-readme {
