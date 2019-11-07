@@ -1,5 +1,5 @@
-$light-mode-link-color: rgb(119, 136, 153);
-$light-mode-link-color-visited: rgb(47, 79, 79);
+$light-mode-link-color: rgb(153, 136, 119);
+$light-mode-link-color-visited: rgb(79, 79, 47);
 
 $dark-mode-link-color: rgb(162, 174, 186);
 $dark-mode-link-color-visited: rgb(112, 128, 144);
@@ -26,4 +26,9 @@ a:link {
 
 a:visited {
 	color: var(--link-color-visited);
+}
+
+.site-header .site-title {
+	text-decoration: none;
+	color: var(--link-color-unvisited);
 }
