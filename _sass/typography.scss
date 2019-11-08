@@ -29,3 +29,13 @@ h1, h2, h3, h4, h5, h6 {
 	font-weight: 300;
 	
 }
+
+.all-files {
+	text-decoration: none;
+	text-rendering: optimizeLegibility;
+	font-weight: 500;
+	
+	&:hover {
+		text-decoration: underline;
+	}
+}

@@ -63,6 +63,10 @@ body {
 
 }
 
+main {
+	margin-top: 1.5rem;
+}
+
 article:not([class]) > *, section > * {
 	max-width: $max-textblock-width;
 	margin-left: auto;
@@ -101,4 +105,11 @@ article.thing {
 	& > section.thing-info {
 		width: 33%;
 	}
+}
+
+.all-files {
+	display: block;
+	padding: 0.75rem;
+	text-align: center;
+	border-radius: 0.2rem;
 }

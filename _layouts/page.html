@@ -16,7 +16,7 @@ layout: default
 			<br />
 			
 			{%- assign source-repo-url = page.repo_url | default: site.repo_url | default: site.github.repository_url -%}
-			{% if source-repo-url %}<a class="all-files view-source{% if site.github %} github-repo{% endif %}" href="{{ source-repo-url }}">View Source{% if site.github %} on GitHub{% endif %}</a>{% endif %}
+			{% if source-repo-url %}<a class="all-files view-source{% if site.github %} github-repo{% endif %}" href="{{ source-repo-url }}">View source{% if site.github %} on GitHub{% endif %}</a>{% endif %}
 		</p>
 
 		{% include license-display.html %}

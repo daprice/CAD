@@ -24,6 +24,13 @@ $dark-mode-link-color-visited: rgb(112, 128, 144);
 	body {
 		background-color: #d5fefd;
 		background-image: linear-gradient(315deg, #d5fefd 0%, #fffcff 74%);
+		
+		@supports (color: color(display-p3 0 0 0 / 1)) {
+			& {
+				background-color: color(display-p3 0.84 1 0.99 / 1);
+				background-image: linear-gradient(315deg, color(display-p3 0.84 1 0.99 / 1) 0%, color(display-p3 1 0.99 1 / 1) 74%);
+			}
+		}
 	}
 }
 
@@ -38,4 +45,62 @@ a:visited {
 .site-header .site-title {
 	text-decoration: none;
 	color: var(--link-color-unvisited);
+}
+
+.all-files.download-all {
+	color: #FFF;
+	text-shadow: 0px 0.1ch 0.2ch rgba(0, 0, 0, 0.3);
+	
+	background-color: #1fd1f9;
+	background-image: linear-gradient(315deg, #1fd1f9 10.26%, #b621fe 100%);
+	
+	@supports (color: color(display-p3 0 0 0 / 1)) {
+		& {
+			background-color: color(display-p3 0.12 0.82 0.98 / 1);
+			background-image: linear-gradient(315deg, color(display-p3 0.12 0.82 0.98 / 1) 10.26%, color(display-p3 0.71 0.13 0.996 / 1) 100%);
+		}
+	}
+	
+	@media(prefers-color-scheme: dark) {
+		color: #000;
+		text-shadow: none;
+	}
+}
+
+.all-files.view-source {
+	color: #FFF;
+	text-shadow: 0px 0.1ch 0.2ch rgba(0, 0, 0, 0.5);
+	
+	background-color: #f2cf43;
+	background-image: linear-gradient(315deg, #f2cf43 0%, #19a186 74%);
+	
+	@supports (color: color(display-p3 0 0 0 / 1)) {
+		& {
+			background-color: color(display-p3 0.95 0.81 0.26 / 1);
+			background-image: linear-gradient(315deg, color(display-p3 0.95 0.81 0.26 / 1) 0%, color(display-p3 0.1 0.63 0.525 / 1) 74%);
+		}
+	}
+	
+	@media(prefers-color-scheme: dark) {
+		color: #000;
+		text-shadow: none;
+		
+		background-color: #00b712;
+		background-image: linear-gradient(315deg, #00b712 0%, #5aff15 74%);
+		
+		@supports (color: color(display-p3 0 0 0 / 1)) {
+			& {
+				background-color: color(display-p3 0 0.72 0.07 / 1);
+				background-image: linear-gradient(315deg, color(display-p3 0 0.72 0.07 / 1) 0%, color(display-p3 0.35 1 0.08 / 1) 74%);
+			}
+		}
+	}
+}
+
+.all-files {
+	box-shadow: 0px 0.5ch 0.75rem rgba(0, 0, 0, 0.2);
+	
+	@media(prefers-color-scheme: dark) {
+		box-shadow: 0px 0px 2px rgba(255, 255, 255, 1), 0px 0.5ch 0.75rem rgba(0, 0, 0, 0.2);
+	}
 }
