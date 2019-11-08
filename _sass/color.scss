@@ -20,6 +20,13 @@ $dark-mode-link-color-visited: rgb(112, 128, 144);
 	}
 }
 
+@media (prefers-color-scheme: light) {
+	body {
+		background-color: #d5fefd;
+		background-image: linear-gradient(315deg, #d5fefd 0%, #fffcff 74%);
+	}
+}
+
 a:link {
 	color: var(--link-color-unvisited);
 }
