@@ -8,6 +8,16 @@ layout: default
 	</section>
 	
 	<section class="thing-info">
+		
+		<p>
+			{%- assign download-all-url = page.zip_url | default: site.zip_url | default: site.github.zip_url -%}
+			{% if download-all-url %}<a class="all-files download-all" href="{{ download-all-url }}">Download all files</a>{% endif %}
+			
+			<br />
+			
+			{%- assign source-repo-url = page.repo_url | default: site.repo_url | default: site.github.repository_url -%}
+			{% if source-repo-url %}<a class="all-files view-source{% if site.github %} github-repo{% endif %}" href="{{ source-repo-url }}">View Source{% if site.github %} on GitHub{% endif %}</a>{% endif %}
+		</p>
 
 		{% include license-display.html %}
 		
