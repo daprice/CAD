@@ -107,6 +107,26 @@ article.thing {
 	}
 }
 
+.license-display {
+	padding: 1rem;
+	background: rgba(0, 0, 0, 0.05);
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+	font-size: small;
+	
+	img {
+		max-height: 2em;
+		
+		& + img {
+			margin-left: 1ch;
+		}
+	}
+	
+	h3 {
+		margin-top: 1em;
+	}
+}
+
 .all-files {
 	display: block;
 	padding: 0.75rem;
