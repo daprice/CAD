@@ -30,7 +30,7 @@ layout: default
 			{%- if file_url contains page.dir and file_url != page_url -%}
 				{%- unless file.extname == ".jpg" or file.extname == ".jpeg" or file.extname == ".png" or file.extname == ".gif" or file.extname == ".usdz" -%}
 					<li>
-						{%- if file.extname == ".stl" or file.extname == ".amf" or file.extname == ".3mf" -%}
+						{%- if file.extname == ".stl" or file.extname == ".amf" or file.extname == ".3mf" or file.extname == ".svg" -%}
 						{%- for image in site.static_files -%}
 							{%- capture image_url -%}{{ image.path | relative_url }}{%- endcapture -%}
 							{%- if image.basename == file.basename and image_url contains page.dir and image_url != page_url -%}
