@@ -43,3 +43,20 @@ p:not([class]) {
 		text-decoration: underline;
 	}
 }
+
+.license-display {
+	font-size: small;
+	
+	.license-name {
+		font-weight: bold;
+	}
+	
+	details:not([open]) summary, details[open] summary {
+		cursor: help;
+	}
+	
+	details:not([open]) summary::after, details[open] summary::after {
+		color: gray;
+	}
+	
+}

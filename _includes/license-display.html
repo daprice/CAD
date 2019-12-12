@@ -95,21 +95,24 @@ Available license types:
 			{%- endif -%}
 		</a>
 	</h2>
-	<p>
-		{%- if page.license == "CC0" -%}
-			To the extent possible under law, <a rel="dct:publisher" href="{{ site.url }}{{ page.url }}"><span property="dct:title">{{ page.author }}</span></a> has waived all copyright and related or neighboring rights to <span property="dct:title">{{ page.title }}</span>.
-		{%- elsif page.license == "Public Domain" -%}
-			This work (<span property="dct:title">{{ page.title }}</span> by <a href="{{ site.url }}{{ page.url }}" rel="dct:creator"><span property="dct:title">{{ page.author }}</span></a>), identified by <a href="{{ site.url }}{{ page.url }}" rel="dct:publisher"><span property="dct:title">{{ page.author }}</span></a>, is free of known copyright restrictions.
-		{%- elsif page.license contains "CC " -%}
-			<a property="dct:title" href="{{ site.url }}{{ page.url }}" rel="cc:attributionURL">{{ page.title }}</a>
-			{% if page.author %} by <span property="cc:attributionName">{{ page.author }}</span>{% endif %}
-			 is licensed under a <a rel="license" href="{{ license-url }}">{{ license-name }}</a>.
-		{%- elsif page.license contains "GPL" -%}
-			<a property="dct:title" href="{{ site.url }}{{ page.url }}" rel="cc:attributionURL">{{ page.title }}</a>
-			{% if page.author %} by <span property="cc:attributionName">{{ page.author }}</span>{% endif %}
-			 is free software: you can redistribute it and/or modify it under the terms of the <a href="{{ license-url }}" rel="license">{{ license-name }}</a> as published by the Free Software Foundation: either version 3 of the License, or (at your option) any later version.
-		{%- endif -%}
-	</p>
+	<details>
+		<summary>Licensed under <span class="license-name">{{ page.license }}</span></summary>
+		<p>
+			{%- if page.license == "CC0" -%}
+				To the extent possible under law, <a rel="dct:publisher" href="{{ site.url }}{{ page.url }}"><span property="dct:title">{{ page.author }}</span></a> has waived all copyright and related or neighboring rights to <span property="dct:title">{{ page.title }}</span>.
+			{%- elsif page.license == "Public Domain" -%}
+				This work (<span property="dct:title">{{ page.title }}</span> by <a href="{{ site.url }}{{ page.url }}" rel="dct:creator"><span property="dct:title">{{ page.author }}</span></a>), identified by <a href="{{ site.url }}{{ page.url }}" rel="dct:publisher"><span property="dct:title">{{ page.author }}</span></a>, is free of known copyright restrictions.
+			{%- elsif page.license contains "CC " -%}
+				<a property="dct:title" href="{{ site.url }}{{ page.url }}" rel="cc:attributionURL">{{ page.title }}</a>
+				{% if page.author %} by <span property="cc:attributionName">{{ page.author }}</span>{% endif %}
+				 is licensed under a <a rel="license" href="{{ license-url }}">{{ license-name }}</a>.
+			{%- elsif page.license contains "GPL" -%}
+				<a property="dct:title" href="{{ site.url }}{{ page.url }}" rel="cc:attributionURL">{{ page.title }}</a>
+				{% if page.author %} by <span property="cc:attributionName">{{ page.author }}</span>{% endif %}
+				 is free software: you can redistribute it and/or modify it under the terms of the <a href="{{ license-url }}" rel="license">{{ license-name }}</a> as published by the Free Software Foundation: either version 3 of the License, or (at your option) any later version.
+			{%- endif -%}
+		</p>
+	</details>
 	
 	{%- if page.remixed-from -%}
 	<h3>Remixed from:</h3>
