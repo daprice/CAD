@@ -1,15 +1,17 @@
 include <MCAD/units.scad>
 include <MCAD/constants.scad>
 
-gear_depth = 0.25 * inch;
+fudge_factor = 0.5;
+
+gear_depth = (3/8) * inch;
 gear_teeth = 12;
-gear_major_d = (3/8) * inch - (1/16) * inch;
-gear_minor_d = (3/8) * inch - (2/16) * inch;
+gear_major_d = (3/8) * inch/* - (1/32) * inch*/ + fudge_factor;
+gear_minor_d = (3/8) * inch - (2/32) * inch + fudge_factor;
 
 knob_depth = 2 * inch;
 knob_cutout_d = 1.5 * inch;
 
-screw_dia = (3/16) * inch;
+screw_dia = (4/16) * inch;
 
 module gear_profile(minor_d, major_d, tooth_count) {
 	gear_major_circumference = PI * gear_major_d;
@@ -52,7 +54,8 @@ module knob_shell() {
 	intersection() {
 		$fn = 180;
 		linear_extrude(height = knob_depth, center = false) knob_profile(knob_max_d, knob_min_d);
-		translate([0, 0, knob_depth]) sphere(r = knob_depth + 0.15 * inch);
+		translate([0, 0, knob_depth]) sphere(r = knob_depth + 0.3 * inch);
+		translate([0, 0, 0])          sphere(r = knob_depth + 0.3 * inch);
 	}
 }
 
@@ -67,7 +70,7 @@ module knob(depth, screw_d, cutout_d, gear_minor_d, gear_major_d, gear_tooth_cou
 			translate([0, 0, screw_wall_thickness]) {
 				gear(gear_minor_d, gear_major_d, gear_tooth_count, gear_depth);
 				
-				translate([0, 0, depth]) {
+				translate([0, 0, gear_depth]) {
 					cylinder(d = cutout_d, h = depth);
 				}
 			}
@@ -78,7 +81,7 @@ module knob(depth, screw_d, cutout_d, gear_minor_d, gear_major_d, gear_tooth_cou
 module knob_test() {
 	intersection() {
 		knob(knob_depth, screw_dia, knob_cutout_d, gear_minor_d, gear_major_d, gear_teeth, gear_depth);
-		cylinder(d = 15, h = 2 + gear_depth);
+		cylinder(d = 14, h = 2 + gear_depth);
 	}
 }
 
